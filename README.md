@@ -56,3 +56,5 @@ worker2 ansible_host=<node2_ip> ansible_user=root
 [Provisioning inspiration](https://github.com/stefanprodan/k8s-scw-baremetal)
 
 [Ansible playbooks inspiration](https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-1-10-cluster-using-kubeadm-on-centos-7)
+
+[Scenario description](https://www.howtoforge.com/tutorial/centos-kubernetes-docker-cluster/)
