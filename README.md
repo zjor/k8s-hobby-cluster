@@ -4,6 +4,30 @@ This repo will guide you through creation of k8s cluster on [Scaleway](https://s
 
 ## Provisioning resources
 
+### Scaleway credentials
+
+Before running the project you'll have to create an access token for Terraform to connect to the Scaleway API
+
+Now retrieve the `<ORGANIZATION_ID>` using your `<ACCESS-TOKEN>` from `/organizations` API endpoint:
+
+```bash
+$ curl https://account.scaleway.com/organizations -H "X-Auth-Token: <ACCESS-TOKEN>"
+```
+
+Sample output (excerpt with organization ID):
+```bash
+"organizations": [{"id": "xxxxxxxxxxxxx", "name": "Organization Name"}],
+```
+
+Using the token and your organization ID, create two environment variables:
+
+```bash
+$ export SCALEWAY_ORGANIZATION="<ORGANIZATION_ID>"
+$ export SCALEWAY_TOKEN="<ACCESS-TOKEN>"
+```
+
+### Provisioning
+
 `terraform init`
 
 `terraform plan`

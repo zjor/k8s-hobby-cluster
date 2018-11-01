@@ -1,18 +1,5 @@
-variable "docker_version" {
-  default     = "17.03.0~ce-0~ubuntu-xenial"
-  description = "Use 17.12.0~ce-0~ubuntu for x86_64 and 17.03.0~ce-0~ubuntu-xenial for arm"
-}
-
-variable "k8s_version" {
-  default = "stable-1.11"
-}
-
-variable "weave_passwd" {
-  default = "KDthFsGZH7nx"
-}
-
 variable "arch" {
-  default     = "arm"
+  default     = "x86_64"
   description = "Values: arm arm64 x86_64"
 }
 
@@ -22,17 +9,17 @@ variable "region" {
 }
 
 variable "server_type" {
-  default     = "C1"
+  default     = "START1-XS"
   description = "Use C1 for arm, ARM64-2GB for arm64 and C2S for x86_64"
 }
 
 variable "server_type_node" {
-  default     = "C1"
+  default     = "START1-S"
   description = "Use C1 for arm, ARM64-2GB for arm64 and C2S for x86_64"
 }
 
 variable "nodes" {
-  default = 2
+  default = 0
 }
 
 variable "ip_admin" {
