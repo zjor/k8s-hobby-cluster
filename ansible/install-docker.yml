@@ -1,0 +1,26 @@
+- hosts: all
+  become: yes
+  tasks:
+
+    - name: install docker-ce dependencies
+      yum:
+        state: present
+        name:
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+
+    - name: add docker-ce repo
+      shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+    - name: install Docker
+      yum:
+        name: docker-ce
+        state: present
+        update_cache: true
+
+    - name: start docker
+      systemd:
+        name: docker
+        enabled: yes
+        state: started

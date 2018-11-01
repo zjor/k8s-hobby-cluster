@@ -1,0 +1,34 @@
+- hosts: all
+  become: yes
+  tasks:
+
+    - name: add kubernetes repo
+      copy:
+        src: files/kubernetes.repo
+        dest: /etc/yum.repos.d/kubernetes.repo
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: install kubelet kubeadm kubectl
+      yum:
+        state: present
+        name:
+          - kubelet
+          - kubeadm
+          - kubectl
+
+    - name: start kubelet
+      systemd:
+        name: kubelet
+        enabled: yes
+        state: started
+
+    - name: change the kuberetes cgroup-driver to 'cgroupfs'
+      shell: sed -i 's/cgroup-driver=systemd/cgroup-driver=cgroupfs/g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+
+    - name: restart kubelet
+      systemd:
+        name: kubelet        
+        state: restarted
+        daemon_reload: yes

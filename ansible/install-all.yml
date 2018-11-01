@@ -1,0 +1,4 @@
+---
+- import_playbook: prepare-networking.yml
+- import_playbook: install-docker.yml
+- import_playbook: install-k8s.yml
