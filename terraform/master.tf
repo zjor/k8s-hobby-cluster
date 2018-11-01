@@ -14,5 +14,5 @@ resource "scaleway_server" "k8s_master" {
     type        = "ssh"
     user        = "root"
     private_key = "${file(var.private_key)}"
-  }
+  }  
 }

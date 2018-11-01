@@ -2,5 +2,5 @@
 master ansible_host=51.158.75.136 ansible_user=root
 
 [workers]
-worker1 ansible_host=51.158.70.84 ansible_user=root
-worker2 ansible_host=51.15.242.157 ansible_user=root
+worker1 ansible_host=51.15.242.157 ansible_user=root
+# worker2 ansible_host=51.15.242.157 ansible_user=root
