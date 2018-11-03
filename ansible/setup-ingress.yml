@@ -1,0 +1,25 @@
+- hosts: master
+  become: yes
+  become_user: centos
+  tasks:
+
+    - name: copy config files to master node
+      copy:
+        src: files/k8s/
+        dest: /home/centos/
+        owner: centos
+
+    - name: create secret for dashboard
+      shell: kubectl create secret generic traefik-secret --from-file ${HOME}/auth --namespace=kube-system
+
+    - name: authorize traefik to use k8s API
+      shell: kubectl apply -f ${HOME}/traefik-rbac.yaml
+    
+    - name: deploy traefik ingress controller
+      shell: kubectl apply -f ${HOME}/traefik-ds.yaml
+
+    - name: secure traefik admin with basic auth
+      shell: kubectl apply -f ${HOME}/traefik-admin-ingress.yaml
+
+    - name: deploy nginx example
+      shell: kubectl apply -f ${HOME}/nginx.yaml      
