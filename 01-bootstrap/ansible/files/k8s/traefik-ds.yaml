@@ -32,6 +32,8 @@ data:
       entryPoint = "http"
     [[acme.domains]]
     main = "tangodnes.cz"
+    [[acme.domains]]
+    main = "iscream.xyz"    
 ---
 kind: DaemonSet
 apiVersion: extensions/v1beta1
