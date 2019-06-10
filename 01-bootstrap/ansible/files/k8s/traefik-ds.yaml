@@ -26,6 +26,7 @@ data:
     email = "zjor.se@gmail.com"
     storage = "/acme/acme.json"
     entryPoint = "https"
+    acmeLogging = true
     onDemand = true
     onHostRule = true
     [acme.httpChallenge]
@@ -34,8 +35,10 @@ data:
     main = "tangodnes.cz"
     [[acme.domains]]
     main = "iscream.xyz"
+    sans = ["iscream.xyz", "app.iscream.xyz"]
     [[acme.domains]]
     main = "photoflow.xyz"
+    sans = ["photoflow.xyz", "app.photoflow.xyz"]
 ---
 kind: DaemonSet
 apiVersion: extensions/v1beta1
