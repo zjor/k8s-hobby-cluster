@@ -1,0 +1,15 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: get pod by the app label for a given namespace
+      shell: kubectl get pods -n {{ k8s_namespace }} -l app={{ app_label }} -o=jsonpath='{.items[0].metadata.name}'
+      register: pod_name
+
+    - debug: var=pod_name.stdout_lines[0]
+
+    - name: delete pod
+      shell: kubectl delete pod {{ pod_name.stdout_lines[0] }} -n {{ k8s_namespace }}
+      register: pod_delete
+
+    - debug: var=pod_delete.stdout_lines
