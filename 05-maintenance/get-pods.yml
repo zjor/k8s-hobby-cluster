@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: get pods for a given namespace
+      shell: kubectl get pods -n {{ k8s_namespace }}
+      register: kubectl
+
+    - debug: var=kubectl.stdout_lines      
